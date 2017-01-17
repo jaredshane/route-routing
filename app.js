@@ -2,7 +2,8 @@ console.log('hello')
 var app = angular.module('MyAwesomeAngularApp', ['ngRoute'])
 
 
-app.config(($routeProvider) => {
+app.config(($routeProvider, $locationProvider) => {
+  $locationProvider.hashPrefix('');
   $routeProvider
     .when('/', {
       controller: 'FrontCtrl',
