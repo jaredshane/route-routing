@@ -4,6 +4,10 @@ var app = angular.module('MyAwesomeAngularApp', ['ngRoute'])
 
 app.config(($routeProvider) => {
   $routeProvider
+    .when('/', {
+      controller: 'FrontCtrl',
+      templateUrl: 'partials/front.html'
+    })
     .when('/atlantic', {
       controller: 'AtlanticCtrl',
       templateUrl: 'partials/atlantic.html'
@@ -12,7 +16,16 @@ app.config(($routeProvider) => {
       controller: 'HighwayCtrl',
       templateUrl: 'partials/highway.html'
     })
+    .otherwise({
+      redirectTo : '/'
+    })
 })
+
+
+app.controller('FrontCtrl', function ($scope) {
+  $scope.header = 'Must See Highways',
+  $scope.description = 'There’s nothing like a road trip to really experience a country. From coastal highways and dizzying mountain passes, to scenic routes through national parks and bridges over great spans of water; roads are the circulatory system that connects a country.'
+});
 
 app.controller('AtlanticCtrl', function ($scope) {
   $scope.title = "The Atlantic Road, Norway"
@@ -25,6 +38,7 @@ app.controller('HighwayCtrl', function ($scope) {
   $scope.description = "State Route 1 is a major north-south state highway that runs along most of the Pacific coastline of the U.S. state of California. The highway is famous for running along some of the most beautiful coastlines in the USA, leading to its designation as an All-American Road."
   $scope.image = "http://twistedsifter.files.wordpress.com/2013/03/bixby-bridge-highway-1-big-sur-california.jpg?w=1600&h=1068"
 });
+
 
 //
 // var app = angular.module('nameOfApp', ['ngRoute'])
